@@ -58,7 +58,6 @@
     margin-bottom: 36px;
   }
 
-
   .header-eyebrow {
     font-size: 11px;
     font-weight: 500;
@@ -255,7 +254,6 @@
     cursor: pointer;
   }
 
-  /* radio / checkbox groups */
   .radio-group, .check-group {
     display: flex;
     flex-direction: column;
@@ -288,7 +286,6 @@
     cursor: pointer;
   }
 
-  /* divider */
   .form-divider {
     grid-column: 1 / -1;
     height: 1px;
@@ -306,7 +303,6 @@
     padding-top: 6px;
   }
 
-  /* submit button */
   .btn-primary {
     display: inline-flex;
     align-items: center;
@@ -345,7 +341,6 @@
     line-height: 1.5;
   }
 
-  /* ── SUCCESS STATE ── */
   .success-box {
     display: none;
     background: #EDF7F2;
@@ -382,7 +377,6 @@
     line-height: 1.6;
   }
 
-  /* ── SURVEY STYLES ── */
   .survey-question {
     background: var(--white);
     border: 1px solid var(--border);
@@ -461,7 +455,6 @@
     margin-top: 6px;
   }
 
-  /* topic chips */
   .chip-group {
     display: flex;
     flex-wrap: wrap;
@@ -484,7 +477,6 @@
   .chip:hover { border-color: var(--navy); color: var(--navy); }
   .chip.selected { background: var(--navy); border-color: var(--navy); color: var(--white); }
 
-  /* ── SIDEBAR INFO ── */
   .layout-two-col {
     display: grid;
     grid-template-columns: 1fr 300px;
@@ -547,7 +539,6 @@
     margin-top: 5px;
   }
 
-  /* ── PROGRESS ── */
   .progress-bar {
     height: 3px;
     background: var(--border);
@@ -563,7 +554,6 @@
     transition: width .4s ease;
   }
 
-  /* ── RESPONSIVE ── */
   @media (max-width: 680px) {
     .form-grid { grid-template-columns: 1fr; }
     .form-group.full { grid-column: 1; }
@@ -575,21 +565,6 @@
     .tab-btn { padding: 14px 16px; }
   }
 
-  /* Mailchimp note */
-  .mailchimp-note {
-    background: #F5F4F8;
-    border-left: 3px solid var(--gold);
-    border-radius: 0 6px 6px 0;
-    padding: 14px 18px;
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.6;
-    margin-bottom: 32px;
-  }
-
-  .mailchimp-note strong { color: var(--navy); }
-
-  /* animate in */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(16px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -607,8 +582,7 @@
   <div class="header-bg-circle2"></div>
   <div class="header-inner">
     <div class="logo-row">
-      <img src="CytoBuoy-logo---25-jaar.png" alt="CytoBuoy" style="height:44px; width:auto;">
-      <div class="logo-text">CytoBuoy B.V.</div>
+      <img src="CytoBuoy-logo---25-jaar.png" alt="CytoBuoy" style="height:70px; width:auto;">
     </div>
     <div class="header-eyebrow">25 Years · Observing the Invisible</div>
     <h1 class="header-title">Customer Day <em>2026</em></h1>
@@ -631,12 +605,8 @@
 <!-- MAIN -->
 <main>
 
-  <!-- ══ TAB 1: REGISTRATION ══ -->
+  <!-- TAB 1: REGISTRATION -->
   <div class="tab-pane active" id="pane-register">
-
-    <div class="mailchimp-note">
-      <strong>For CytoBuoy team:</strong> This page is designed to be hosted as a Mailchimp landing page or embedded in your website. Copy this HTML directly into your Mailchimp page builder or hand it to your web team. The form below shows the recommended fields — connect them to your Mailchimp audience list. The survey tab can also be sent as a separate Mailchimp survey campaign.
-    </div>
 
     <div class="layout-two-col">
       <div>
@@ -698,6 +668,7 @@
             <div class="form-group full">
               <label>Dietary requirements or allergies</label>
               <input type="text" placeholder="e.g. vegetarian, gluten-free, none">
+              <span style="font-size:12px;color:var(--muted);margin-top:2px;">This includes lunches on both days (14 & 15 October).</span>
             </div>
 
             <div class="form-divider"></div>
@@ -708,7 +679,7 @@
               <div class="radio-group inline">
                 <label class="radio-item"><input type="radio" name="talk" value="yes" id="talk-yes" onchange="toggleTalkField()"> Yes</label>
                 <label class="radio-item"><input type="radio" name="talk" value="no" id="talk-no" checked onchange="toggleTalkField()"> No</label>
-                <label class="radio-item"><input type="radio" name="talk" value="maybe" id="talk-maybe" onchange="toggleTalkField()"> Maybe — tell me more</label>
+                <label class="radio-item"><input type="radio" name="talk" value="maybe" id="talk-maybe" onchange="toggleTalkField()"> Maybe</label>
               </div>
             </div>
 
@@ -721,10 +692,9 @@
             <div class="form-section-label">Practical</div>
 
             <div class="form-group full">
-              <label>Will you need assistance with accommodation recommendations?</label>
-              <div class="radio-group inline">
-                <label class="radio-item"><input type="radio" name="hotel" value="yes"> Yes please</label>
-                <label class="radio-item"><input type="radio" name="hotel" value="no" checked> No, I'll arrange my own</label>
+              <label>Accommodation</label>
+              <div style="background:#F0F4FA;border-left:3px solid var(--gold);border-radius:0 6px 6px 0;padding:12px 16px;font-size:13px;color:var(--muted);line-height:1.6;">
+                🏨 Hotel recommendations for the Woerden area will be sent to all registered guests shortly.
               </div>
             </div>
 
@@ -756,7 +726,6 @@
 
         </form>
 
-        <!-- SUCCESS -->
         <div class="success-box" id="reg-success">
           <div class="check-icon">✓</div>
           <h3>You're registered!</h3>
@@ -792,7 +761,7 @@
   </div><!-- /pane-register -->
 
 
-  <!-- ══ TAB 2: SURVEY ══ -->
+  <!-- TAB 2: SURVEY -->
   <div class="tab-pane" id="pane-survey">
 
     <div class="section-label">Programme survey</div>
@@ -803,7 +772,6 @@
 
     <form id="survey-form" onsubmit="handleSurveySubmit(event)">
 
-      <!-- Q1 -->
       <div class="survey-question">
         <div class="q-number">Question 01</div>
         <div class="q-text">Which sessions interest you most?</div>
@@ -824,7 +792,6 @@
         </div>
       </div>
 
-      <!-- Q2 -->
       <div class="survey-question">
         <div class="q-number">Question 02</div>
         <div class="q-text">What monitoring challenges are you facing right now?</div>
@@ -832,7 +799,6 @@
         <textarea placeholder="e.g. 'We're struggling to distinguish HAB species at low concentrations. We'd love to see a session on detection thresholds and calibration strategies.'" style="min-height:110px"></textarea>
       </div>
 
-      <!-- Q3 -->
       <div class="survey-question">
         <div class="q-number">Question 03</div>
         <div class="q-text">How would you rate the technical depth you'd like for the sessions?</div>
@@ -847,7 +813,6 @@
         <div class="rating-labels"><span>Introductory</span><span>Deep technical</span></div>
       </div>
 
-      <!-- Q4 -->
       <div class="survey-question">
         <div class="q-number">Question 04</div>
         <div class="q-text">What format works best for you?</div>
@@ -863,7 +828,6 @@
         </div>
       </div>
 
-      <!-- Q5 -->
       <div class="survey-question">
         <div class="q-number">Question 05</div>
         <div class="q-text">Is there a specific speaker, researcher, or collaborator you'd love to hear from?</div>
@@ -871,7 +835,6 @@
         <textarea placeholder="e.g. 'A researcher working on real-time detection of cyanobacteria in freshwater reservoirs.'"></textarea>
       </div>
 
-      <!-- Q6 -->
       <div class="survey-question">
         <div class="q-number">Question 06</div>
         <div class="q-text">What is the single most valuable thing Customer Day could do for you?</div>
@@ -879,7 +842,6 @@
         <textarea placeholder="e.g. 'Give me direct access to the software team so I can explain a recurring calibration issue.'" style="min-height:80px"></textarea>
       </div>
 
-      <!-- Q7 -->
       <div class="survey-question">
         <div class="q-number">Question 07</div>
         <div class="q-text">How satisfied are you with CytoBuoy support and communication overall?</div>
@@ -894,7 +856,6 @@
         <div class="rating-labels"><span>Not satisfied</span><span>Very satisfied</span></div>
       </div>
 
-      <!-- Q8 -->
       <div class="survey-question">
         <div class="q-number">Question 08</div>
         <div class="q-text">Are you interested in being part of a customer testimonial for the opening film?</div>
@@ -906,7 +867,6 @@
         </div>
       </div>
 
-      <!-- Q9 -->
       <div class="survey-question">
         <div class="q-number">Question 09</div>
         <div class="q-text">Anything else you'd like to share?</div>
@@ -934,7 +894,6 @@
 </main>
 
 <script>
-  // Tab switching
   function switchTab(tab, btn) {
     document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -942,27 +901,23 @@
     btn.classList.add('active');
   }
 
-  // Talk field toggle
   function toggleTalkField() {
     const yes = document.getElementById('talk-yes').checked;
     const maybe = document.getElementById('talk-maybe').checked;
     document.getElementById('talk-details').style.display = (yes || maybe) ? 'flex' : 'none';
   }
 
-  // Chip toggle
   function toggleChip(el) {
     el.classList.toggle('selected');
     updateSurveyProgress();
   }
 
-  // Rating
   function selectRating(group, val, btn) {
     btn.closest('.rating-row').querySelectorAll('.rating-btn').forEach(b => b.classList.remove('selected'));
     btn.classList.add('selected');
     updateSurveyProgress();
   }
 
-  // Survey progress
   function updateSurveyProgress() {
     const questions = document.querySelectorAll('#pane-survey .survey-question').length;
     let answered = 0;
@@ -980,7 +935,6 @@
     ta.addEventListener('input', updateSurveyProgress);
   });
 
-  // Form submits
   function handleRegSubmit(e) {
     e.preventDefault();
     document.getElementById('reg-form').style.display = 'none';
