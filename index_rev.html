@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CytoBuoy Customer Day 2026 — Register & Survey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1B2949;
+    --gold: #F5C200;
+    --gold-light: #FFD740;
+    --cream: #FAF8F3;
+    --text: #1a1a1a;
+    --muted: #6B6B6B;
+    --border: #E0DDD6;
+    --white: #ffffff;
+    --success: #2E7D5B;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--navy);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header-stripe {
+    height: 5px;
+    background: var(--gold);
+    width: 100%;
+  }
+
+  .header-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 52px 32px 44px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .logo-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 36px;
+  }
+
+  .header-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+
+  .header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 5vw, 48px);
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 18px;
+  }
+
+  .header-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .header-meta {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+  }
+
+  .meta-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .header-bg-circle {
+    position: absolute;
+    right: -80px;
+    top: -60px;
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    border: 1px solid rgba(245,194,0,0.12);
+    z-index: 1;
+  }
+
+  .header-bg-circle2 {
+    position: absolute;
+    right: 60px;
+    top: 20px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid rgba(245,194,0,0.08);
+    z-index: 1;
+  }
+
+  /* ── TABS ── */
+  .tab-bar {
+    background: var(--navy);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .tab-bar-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    gap: 0;
+  }
+
+  .tab-btn {
+    background: none;
+    border: none;
+    padding: 16px 28px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.45);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all .2s;
+    letter-spacing: .01em;
+  }
+
+  .tab-btn.active {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
+
+  .tab-btn:hover:not(.active) {
+    color: rgba(255,255,255,0.75);
+  }
+
+  /* ── MAIN ── */
+  main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 48px 32px 80px;
+  }
+
+  .tab-pane { display: none; }
+  .tab-pane.active { display: block; }
+
+  /* ── SECTION HEADING ── */
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+
+  .section-desc {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 36px;
+    max-width: 560px;
+  }
+
+  /* ── FORM ── */
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-group.full { grid-column: 1 / -1; }
+
+  label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--navy);
+    letter-spacing: .01em;
+  }
+
+  label .req { color: #B94040; margin-left: 2px; }
+
+  input[type="text"],
+  input[type="email"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--text);
+    background: var(--white);
+    transition: border-color .15s, box-shadow .15s;
+    outline: none;
+    -webkit-appearance: none;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--navy);
+    box-shadow: 0 0 0 3px rgba(27,41,73,0.08);
+  }
+
+  textarea { resize: vertical; min-height: 90px; }
+
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B6B6B' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+    cursor: pointer;
+  }
+
+  .radio-group, .check-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 2px;
+  }
+
+  .radio-group.inline, .check-group.inline {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .radio-item, .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.4;
+  }
+
+  .radio-item input, .check-item input {
+    width: 17px;
+    height: 17px;
+    margin-top: 1px;
+    flex-shrink: 0;
+    accent-color: var(--navy);
+    cursor: pointer;
+  }
+
+  .form-divider {
+    grid-column: 1 / -1;
+    height: 1px;
+    background: var(--border);
+    margin: 10px 0;
+  }
+
+  .form-section-label {
+    grid-column: 1 / -1;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--navy);
+    padding-top: 6px;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--navy);
+    color: var(--white);
+    border: none;
+    padding: 14px 32px;
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background .15s, transform .1s;
+    margin-top: 28px;
+  }
+
+  .btn-primary:hover { background: #253660; }
+  .btn-primary:active { transform: translateY(1px); }
+
+  .btn-arrow {
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid rgba(255,255,255,0.5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+  }
+
+  .form-note {
+    margin-top: 14px;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .success-box {
+    display: none;
+    background: #EDF7F2;
+    border: 1px solid #A8D8BE;
+    border-radius: 10px;
+    padding: 32px;
+    text-align: center;
+    margin-top: 32px;
+  }
+
+  .success-box .check-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--success);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    color: white;
+    font-size: 22px;
+  }
+
+  .success-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+
+  .success-box p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .survey-question {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 28px;
+    margin-bottom: 18px;
+    transition: border-color .15s;
+  }
+
+  .survey-question:focus-within {
+    border-color: var(--navy);
+  }
+
+  .q-number {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .q-number::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #F0EDE6;
+  }
+
+  .q-text {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+
+  .q-hint {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 18px;
+    line-height: 1.5;
+  }
+
+  .rating-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .rating-btn {
+    width: 44px;
+    height: 44px;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    background: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all .15s;
+    color: var(--text);
+  }
+
+  .rating-btn:hover { border-color: var(--navy); color: var(--navy); background: #F5F4F8; }
+  .rating-btn.selected { background: var(--navy); border-color: var(--navy); color: var(--white); }
+
+  .rating-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
+  .chip-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .chip {
+    padding: 8px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text);
+    background: var(--white);
+    cursor: pointer;
+    transition: all .15s;
+    user-select: none;
+  }
+
+  .chip:hover { border-color: var(--navy); color: var(--navy); }
+  .chip.selected { background: var(--navy); border-color: var(--navy); color: var(--white); }
+
+  .layout-two-col {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 36px;
+    align-items: start;
+  }
+
+  .info-card {
+    background: var(--navy);
+    border-radius: 10px;
+    padding: 28px;
+    color: var(--white);
+    position: sticky;
+    top: 24px;
+  }
+
+  .info-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    color: var(--gold);
+  }
+
+  .info-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .info-icon {
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .info-card .divider {
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+    margin: 20px 0;
+  }
+
+  .programme-item {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.4;
+  }
+
+  .programme-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 5px;
+  }
+
+  .progress-bar {
+    height: 3px;
+    background: var(--border);
+    border-radius: 2px;
+    margin-bottom: 36px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--gold);
+    border-radius: 2px;
+    transition: width .4s ease;
+  }
+
+  @media (max-width: 680px) {
+    .form-grid { grid-template-columns: 1fr; }
+    .form-group.full { grid-column: 1; }
+    .layout-two-col { grid-template-columns: 1fr; }
+    .info-card { position: static; }
+    .header-inner { padding: 36px 20px 30px; }
+    main { padding: 32px 20px 60px; }
+    .tab-bar-inner { padding: 0 20px; }
+    .tab-btn { padding: 14px 16px; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .tab-pane.active { animation: fadeUp .3s ease; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-stripe"></div>
+  <div class="header-bg-circle"></div>
+  <div class="header-bg-circle2"></div>
+  <div class="header-inner">
+    <div class="logo-row">
+      <img src="CytoBuoy-logo---25-jaar.png" alt="CytoBuoy" style="height:70px; width:auto;">
+    </div>
+    <div class="header-eyebrow">25 Years · Observing the Invisible</div>
+    <h1 class="header-title">Customer Day <em>2026</em></h1>
+    <div class="header-meta">
+      <div class="meta-item"><div class="meta-dot"></div> 14–15 October 2026</div>
+      <div class="meta-item"><div class="meta-dot"></div> Woerden, Netherlands</div>
+      <div class="meta-item"><div class="meta-dot"></div> Two days · Science · Community · Future</div>
+    </div>
+  </div>
+</header>
+
+<!-- TABS -->
+<div class="tab-bar">
+  <div class="tab-bar-inner">
+    <button class="tab-btn active" onclick="switchTab('register', this)">Register to attend</button>
+    <button class="tab-btn" onclick="switchTab('survey', this)">Programme survey</button>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main>
+
+  <!-- TAB 1: REGISTRATION -->
+  <div class="tab-pane active" id="pane-register">
+
+    <div class="layout-two-col">
+      <div>
+        <div class="section-label">Registration</div>
+        <h2 class="section-title">Reserve your place</h2>
+        <p class="section-desc">Join us in Woerden to celebrate 25 years of CytoBuoy and help shape what comes next. Places are limited — register now to secure yours.</p>
+
+        <form id="reg-form" onsubmit="handleRegSubmit(event)">
+          <div class="form-grid">
+
+            <div class="form-section-label">Your details</div>
+
+            <div class="form-group">
+              <label>First name <span class="req">*</span></label>
+              <input type="text" placeholder="e.g. Lilian" required>
+            </div>
+            <div class="form-group">
+              <label>Last name <span class="req">*</span></label>
+              <input type="text" placeholder="e.g. Brewer Lisboa" required>
+            </div>
+            <div class="form-group">
+              <label>Email address <span class="req">*</span></label>
+              <input type="email" placeholder="you@institute.org" required>
+            </div>
+            <div class="form-group">
+              <label>Institution / Organisation <span class="req">*</span></label>
+              <input type="text" placeholder="e.g. SINTEF Ocean" required>
+            </div>
+            <div class="form-group">
+              <label>Country</label>
+              <input type="text" placeholder="e.g. Norway">
+            </div>
+            <div class="form-group">
+              <label>Your role</label>
+              <input type="text" placeholder="e.g. Research scientist">
+            </div>
+
+            <div class="form-divider"></div>
+            <div class="form-section-label">Attendance</div>
+
+            <div class="form-group full">
+              <label>Which days will you attend? <span class="req">*</span></label>
+              <div class="radio-group inline">
+                <label class="radio-item"><input type="radio" name="days" value="both" checked> Both days (14–15 Oct)</label>
+                <label class="radio-item"><input type="radio" name="days" value="day1"> Day 1 only (14 Oct)</label>
+                <label class="radio-item"><input type="radio" name="days" value="day2"> Day 2 only (15 Oct)</label>
+              </div>
+            </div>
+
+            <div class="form-group full">
+              <label>Conference dinner — evening of 14 October</label>
+              <div class="radio-group inline">
+                <label class="radio-item"><input type="radio" name="dinner" value="yes" checked> Yes, I'll join</label>
+                <label class="radio-item"><input type="radio" name="dinner" value="no"> No, thank you</label>
+                <label class="radio-item"><input type="radio" name="dinner" value="maybe"> Not sure yet</label>
+              </div>
+            </div>
+
+            <div class="form-group full">
+              <label>Dietary requirements or allergies</label>
+              <input type="text" placeholder="e.g. vegetarian, gluten-free, none">
+              <span style="font-size:12px;color:var(--muted);margin-top:2px;">This includes lunches on both days (14 & 15 October).</span>
+            </div>
+
+            <div class="form-divider"></div>
+            <div class="form-section-label">Programme contribution</div>
+
+            <div class="form-group full">
+              <label>Would you be interested in presenting a short talk? (15–20 min)</label>
+              <div class="radio-group inline">
+                <label class="radio-item"><input type="radio" name="talk" value="yes" id="talk-yes" onchange="toggleTalkField()"> Yes</label>
+                <label class="radio-item"><input type="radio" name="talk" value="no" id="talk-no" checked onchange="toggleTalkField()"> No</label>
+                <label class="radio-item"><input type="radio" name="talk" value="maybe" id="talk-maybe" onchange="toggleTalkField()"> Maybe</label>
+              </div>
+            </div>
+
+            <div class="form-group full" id="talk-details" style="display:none">
+              <label>Working title + 2–3 sentences about your proposed talk</label>
+              <textarea placeholder="e.g. 'Continuous HAB monitoring in the North Sea — we'll share what two years of automated CytoSense data revealed about seasonal bloom dynamics in our estuary.'"></textarea>
+            </div>
+
+            <div class="form-divider"></div>
+            <div class="form-section-label">Practical</div>
+
+            <div class="form-group full">
+              <label>Accommodation</label>
+              <div style="background:#F0F4FA;border-left:3px solid var(--gold);border-radius:0 6px 6px 0;padding:12px 16px;font-size:13px;color:var(--muted);line-height:1.6;">
+                🏨 Hotel recommendations for the Woerden area will be sent to all registered guests shortly.
+              </div>
+            </div>
+
+            <div class="form-group full">
+              <label>How did you hear about Customer Day 2026?</label>
+              <select>
+                <option value="">Select one</option>
+                <option>Save the Date email</option>
+                <option>Direct contact from CytoBuoy</option>
+                <option>Conference / event</option>
+                <option>Colleague recommendation</option>
+                <option>LinkedIn</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="form-group full">
+              <label>Anything else you'd like us to know?</label>
+              <textarea placeholder="Special access needs, questions, anything at all..."></textarea>
+            </div>
+
+          </div><!-- /form-grid -->
+
+          <button type="submit" class="btn-primary">
+            Confirm my registration
+            <div class="btn-arrow">→</div>
+          </button>
+          <p class="form-note">Your information will only be used to organise the event and keep you updated about Customer Day 2026. We will not share it with third parties.</p>
+
+        </form>
+
+        <div class="success-box" id="reg-success">
+          <div class="check-icon">✓</div>
+          <h3>You're registered!</h3>
+          <p>Thank you — we'll be in touch with programme details and practical information closer to the event.<br><br>
+          Questions? Write to <strong>lilian@cytobuoy.com</strong></p>
+        </div>
+
+      </div><!-- /left col -->
+
+      <!-- INFO SIDEBAR -->
+      <div class="info-card">
+        <h4>Event details</h4>
+        <div class="info-row"><div class="info-icon">📅</div><div><strong>14–15 October 2026</strong><br>Two full days</div></div>
+        <div class="info-row"><div class="info-icon">📍</div><div>CytoBuoy B.V.<br>Johan de Wittlaan 11<br>Woerden, Netherlands</div></div>
+        <div class="info-row"><div class="info-icon">🍽</div><div>Conference dinner<br>Evening of 14 October</div></div>
+        <div class="info-row"><div class="info-icon">🎟</div><div>Free of charge<br>Places are limited</div></div>
+
+        <div class="divider"></div>
+
+        <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:14px">Programme highlights</div>
+        <div class="programme-item"><div class="programme-dot"></div>Founder keynote: 25 years of seeing the invisible</div>
+        <div class="programme-item"><div class="programme-dot"></div>Technical deep dives — CytoSense & CytoSub</div>
+        <div class="programme-item"><div class="programme-dot"></div>Customer panel: real-world monitoring challenges</div>
+        <div class="programme-item"><div class="programme-dot"></div>Future Vision: monitoring infrastructure for the next decade</div>
+        <div class="programme-item"><div class="programme-dot"></div>Legacy Wall — 25 years of deployments</div>
+        <div class="programme-item"><div class="programme-dot"></div>Conference dinner on 14 October</div>
+
+        <div class="divider"></div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.6">Questions? Contact<br><strong style="color:var(--gold)">lilian@cytobuoy.com</strong></div>
+      </div>
+
+    </div><!-- /two-col -->
+  </div><!-- /pane-register -->
+
+
+  <!-- TAB 2: SURVEY -->
+  <div class="tab-pane" id="pane-survey">
+
+    <div class="section-label">Programme survey</div>
+    <h2 class="section-title">Help us shape the programme</h2>
+    <p class="section-desc">This takes about 4 minutes. Your answers directly influence the sessions, speakers, and discussions we organise for October.</p>
+
+    <div class="progress-bar"><div class="progress-fill" id="survey-progress" style="width:0%"></div></div>
+
+    <form id="survey-form" onsubmit="handleSurveySubmit(event)">
+
+      <div class="survey-question">
+        <div class="q-number">Question 01</div>
+        <div class="q-text">Which sessions interest you most?</div>
+        <div class="q-hint">Select all that apply — this helps us allocate time.</div>
+        <div class="chip-group">
+          <div class="chip" onclick="toggleChip(this)">Founder keynote — 25 years of CytoBuoy</div>
+          <div class="chip" onclick="toggleChip(this)">CytoSense — applications and data analysis</div>
+          <div class="chip" onclick="toggleChip(this)">CytoSub — autonomous deployment</div>
+          <div class="chip" onclick="toggleChip(this)">Long-term monitoring infrastructure</div>
+          <div class="chip" onclick="toggleChip(this)">HAB monitoring and early warning</div>
+          <div class="chip" onclick="toggleChip(this)">AI and machine learning for plankton data</div>
+          <div class="chip" onclick="toggleChip(this)">Customer panel — shared experiences</div>
+          <div class="chip" onclick="toggleChip(this)">Future product roadmap</div>
+          <div class="chip" onclick="toggleChip(this)">EcoTaxa / data integration workflows</div>
+          <div class="chip" onclick="toggleChip(this)">Marine biodiversity monitoring</div>
+          <div class="chip" onclick="toggleChip(this)">Policy and reporting frameworks</div>
+          <div class="chip" onclick="toggleChip(this)">Carbon monitoring / blue carbon</div>
+        </div>
+      </div>
+
+      <div class="survey-question">
+        <div class="q-number">Question 02</div>
+        <div class="q-text">What monitoring challenges are you facing right now?</div>
+        <div class="q-hint">Be as specific as you like — this is the most useful thing you can share with us.</div>
+        <textarea placeholder="e.g. 'We're struggling to distinguish HAB species at low concentrations. We'd love to see a session on detection thresholds and calibration strategies.'" style="min-height:110px"></textarea>
+      </div>
+
+      <div class="survey-question">
+        <div class="q-number">Question 03</div>
+        <div class="q-text">How would you rate the technical depth you'd like for the sessions?</div>
+        <div class="q-hint">1 = introductory overviews · 5 = deep technical content for experienced users</div>
+        <div class="rating-row" id="q3-rating">
+          <button type="button" class="rating-btn" onclick="selectRating('q3', 1, this)">1</button>
+          <button type="button" class="rating-btn" onclick="selectRating('q3', 2, this)">2</button>
+          <button type="button" class="rating-btn" onclick="selectRating('q3', 3, this)">3</button>
+          <button type="button" class="rating-btn" onclick="selectRating('q3', 4, this)">4</button>
+          <button type="button" class="rating-btn" onclick="selectRating('q3', 5, this)">5</button>
+        </div>
+        <div class="rating-labels"><span>Introductory</span><span>Deep technical</span></div>
+      </div>
+
+      <div class="survey-question">
+        <div class="q-number">Question 04</div>
+        <div class="q-text">What format works best for you?</div>
+        <div class="q-hint">Select all that apply.</div>
+        <div class="chip-group">
+          <div class="chip" onclick="toggleChip(this)">Short talks (15 min) with Q&A</div>
+          <div class="chip" onclick="toggleChip(this)">Longer keynote-style presentations</div>
+          <div class="chip" onclick="toggleChip(this)">Panel discussions</div>
+          <div class="chip" onclick="toggleChip(this)">Live instrument demonstrations</div>
+          <div class="chip" onclick="toggleChip(this)">Hands-on workshops</div>
+          <div class="chip" onclick="toggleChip(this)">Open discussion / roundtable</div>
+          <div class="chip" onclick="toggleChip(this)">Poster session</div>
+        </div>
+      </div>
+
+      <div class="survey-question">
+        <div class="q-number">Question 05</div>
+        <div class="q-text">Is there a specific speaker, researcher, or collaborator you'd love to hear from?</div>
+        <div class="q-hint">It could be a CytoBuoy team member, an external scientist, or even yourself.</div>
+        <textarea placeholder="e.g. 'A researcher working on real-time detection of cyanobacteria in freshwater reservoirs.'"></textarea>
+      </div>
+
+      <div class="survey-question">
+        <div class="q-number">Question 06</div>
+        <div class="q-text">What is the single most valuable thing Customer Day could do for you?</div>
+        <div class="q-hint">One sentence is enough.</div>
+        <textarea placeholder="e.g. 'Give me direct access to the software team so I can explain a recurring calibration issue.'" style="min-height:80px"></textarea>
+      </div>
+
+      <div class="survey-question">
+        <div class="q-number">Question 07</div>
+        <div class="q-text">How satisfied are you with CytoBuoy support and communication overall?</div>
+        <div class="q-hint">1 = not satisfied · 5 = very satisfied</div>
+        <div class="rating-row" id="q7-rating">
+          <button type="button" class="rating-btn" onclick="selectRating('q7', 1, this)">1</button>
+          <button type="button" class="rating-btn" onclick="selectRating('q7', 2, this)">2</button>
+          <button type="button" class="rating-btn" onclick="selectRating('q7', 3, this)">3</button>
+          <button type="button" class="rating-btn" onclick="selectRating('q7', 4, this)">4</button>
+          <button type="button" class="rating-btn" onclick="selectRating('q7', 5, this)">5</button>
+        </div>
+        <div class="rating-labels"><span>Not satisfied</span><span>Very satisfied</span></div>
+      </div>
+
+      <div class="survey-question">
+        <div class="q-number">Question 08</div>
+        <div class="q-text">Are you interested in being part of a customer testimonial for the opening film?</div>
+        <div class="q-hint">A 15–20 minute recorded conversation. We edit it down to 20 seconds and share it with you before anything is published.</div>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="interview" value="yes"> Yes, I'd be happy to</label>
+          <label class="radio-item"><input type="radio" name="interview" value="maybe"> Maybe — tell me more first</label>
+          <label class="radio-item"><input type="radio" name="interview" value="no"> Not this time</label>
+        </div>
+      </div>
+
+      <div class="survey-question">
+        <div class="q-number">Question 09</div>
+        <div class="q-text">Anything else you'd like to share?</div>
+        <div class="q-hint">Ideas, requests, suggestions, or a topic that's been on your mind.</div>
+        <textarea placeholder="Open space — no wrong answers here." style="min-height:100px"></textarea>
+      </div>
+
+      <button type="submit" class="btn-primary">
+        Submit my answers
+        <div class="btn-arrow">→</div>
+      </button>
+      <p class="form-note">Your answers are anonymous unless you choose to include your name. We read every response.</p>
+
+    </form>
+
+    <div class="success-box" id="survey-success">
+      <div class="check-icon">✓</div>
+      <h3>Thank you!</h3>
+      <p>Your input will directly shape what happens in October. We'll send the programme as soon as it's confirmed.<br><br>
+      Questions? Write to <strong>lilian@cytobuoy.com</strong></p>
+    </div>
+
+  </div><!-- /pane-survey -->
+
+</main>
+
+<script>
+  function switchTab(tab, btn) {
+    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('pane-' + tab).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  function toggleTalkField() {
+    const yes = document.getElementById('talk-yes').checked;
+    const maybe = document.getElementById('talk-maybe').checked;
+    document.getElementById('talk-details').style.display = (yes || maybe) ? 'flex' : 'none';
+  }
+
+  function toggleChip(el) {
+    el.classList.toggle('selected');
+    updateSurveyProgress();
+  }
+
+  function selectRating(group, val, btn) {
+    btn.closest('.rating-row').querySelectorAll('.rating-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    updateSurveyProgress();
+  }
+
+  function updateSurveyProgress() {
+    const questions = document.querySelectorAll('#pane-survey .survey-question').length;
+    let answered = 0;
+    document.querySelectorAll('#pane-survey .survey-question').forEach(q => {
+      const hasChip = q.querySelector('.chip.selected');
+      const hasText = q.querySelector('textarea') && q.querySelector('textarea').value.trim().length > 0;
+      const hasRating = q.querySelector('.rating-btn.selected');
+      const hasRadio = q.querySelector('input[type=radio]:checked');
+      if (hasChip || hasText || hasRating || hasRadio) answered++;
+    });
+    document.getElementById('survey-progress').style.width = Math.round((answered / questions) * 100) + '%';
+  }
+
+  document.querySelectorAll('#pane-survey textarea').forEach(ta => {
+    ta.addEventListener('input', updateSurveyProgress);
+  });
+
+  function handleRegSubmit(e) {
+    e.preventDefault();
+    document.getElementById('reg-form').style.display = 'none';
+    document.getElementById('reg-success').style.display = 'block';
+  }
+
+  function handleSurveySubmit(e) {
+    e.preventDefault();
+    document.getElementById('survey-form').style.display = 'none';
+    document.getElementById('survey-success').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
