@@ -614,34 +614,34 @@
         <h2 class="section-title">Reserve your place</h2>
         <p class="section-desc">Join us in Woerden to celebrate 25 years of CytoBuoy and help shape what comes next. Places are limited — register now to secure yours.</p>
 
-        <form id="reg-form" onsubmit="handleRegSubmit(event)">
+        <form id="reg-form" action="https://formspree.io/f/mlgkpavz" method="POST" onsubmit="handleRegSubmit(event)">
           <div class="form-grid">
 
             <div class="form-section-label">Your details</div>
 
             <div class="form-group">
               <label>First name <span class="req">*</span></label>
-              <input type="text" placeholder="e.g. Lilian" required>
+              <input type="text" name="first_name" placeholder="e.g. Lilian" required>
             </div>
             <div class="form-group">
               <label>Last name <span class="req">*</span></label>
-              <input type="text" placeholder="e.g. Brewer Lisboa" required>
+              <input type="text" name="last_name" placeholder="e.g. Brewer Lisboa" required>
             </div>
             <div class="form-group">
               <label>Email address <span class="req">*</span></label>
-              <input type="email" placeholder="you@institute.org" required>
+              <input type="email" name="email" placeholder="you@institute.org" required>
             </div>
             <div class="form-group">
               <label>Institution / Organisation <span class="req">*</span></label>
-              <input type="text" placeholder="e.g. SINTEF Ocean" required>
+              <input type="text" name="organisation" placeholder="e.g. SINTEF Ocean" required>
             </div>
             <div class="form-group">
               <label>Country</label>
-              <input type="text" placeholder="e.g. Norway">
+              <input type="text" name="country" placeholder="e.g. Norway">
             </div>
             <div class="form-group">
               <label>Your role</label>
-              <input type="text" placeholder="e.g. Research scientist">
+              <input type="text" name="role" placeholder="e.g. Research scientist">
             </div>
 
             <div class="form-divider"></div>
@@ -650,24 +650,24 @@
             <div class="form-group full">
               <label>Which days will you attend? <span class="req">*</span></label>
               <div class="radio-group inline">
-                <label class="radio-item"><input type="radio" name="days" value="both" checked> Both days (14–15 Oct)</label>
-                <label class="radio-item"><input type="radio" name="days" value="day1"> Day 1 only (14 Oct)</label>
-                <label class="radio-item"><input type="radio" name="days" value="day2"> Day 2 only (15 Oct)</label>
+                <label class="radio-item"><input type="radio" name="days" value="Both days (14-15 Oct)" checked> Both days (14–15 Oct)</label>
+                <label class="radio-item"><input type="radio" name="days" value="Day 1 only (14 Oct)"> Day 1 only (14 Oct)</label>
+                <label class="radio-item"><input type="radio" name="days" value="Day 2 only (15 Oct)"> Day 2 only (15 Oct)</label>
               </div>
             </div>
 
             <div class="form-group full">
               <label>Conference dinner — evening of 14 October</label>
               <div class="radio-group inline">
-                <label class="radio-item"><input type="radio" name="dinner" value="yes" checked> Yes, I'll join</label>
-                <label class="radio-item"><input type="radio" name="dinner" value="no"> No, thank you</label>
-                <label class="radio-item"><input type="radio" name="dinner" value="maybe"> Not sure yet</label>
+                <label class="radio-item"><input type="radio" name="dinner" value="Yes, joining dinner" checked> Yes, I'll join</label>
+                <label class="radio-item"><input type="radio" name="dinner" value="No dinner"> No, thank you</label>
+                <label class="radio-item"><input type="radio" name="dinner" value="Not sure about dinner"> Not sure yet</label>
               </div>
             </div>
 
             <div class="form-group full">
               <label>Dietary requirements or allergies</label>
-              <input type="text" placeholder="e.g. vegetarian, gluten-free, none">
+              <input type="text" name="dietary" placeholder="e.g. vegetarian, gluten-free, none">
               <span style="font-size:12px;color:var(--muted);margin-top:2px;">This includes lunches on both days (14 & 15 October).</span>
             </div>
 
@@ -677,15 +677,15 @@
             <div class="form-group full">
               <label>Would you be interested in presenting a short talk? (15–20 min)</label>
               <div class="radio-group inline">
-                <label class="radio-item"><input type="radio" name="talk" value="yes" id="talk-yes" onchange="toggleTalkField()"> Yes</label>
-                <label class="radio-item"><input type="radio" name="talk" value="no" id="talk-no" checked onchange="toggleTalkField()"> No</label>
-                <label class="radio-item"><input type="radio" name="talk" value="maybe" id="talk-maybe" onchange="toggleTalkField()"> Maybe</label>
+                <label class="radio-item"><input type="radio" name="talk" value="Yes" id="talk-yes" onchange="toggleTalkField()"> Yes</label>
+                <label class="radio-item"><input type="radio" name="talk" value="No" id="talk-no" checked onchange="toggleTalkField()"> No</label>
+                <label class="radio-item"><input type="radio" name="talk" value="Maybe" id="talk-maybe" onchange="toggleTalkField()"> Maybe</label>
               </div>
             </div>
 
             <div class="form-group full" id="talk-details" style="display:none">
               <label>Working title + 2–3 sentences about your proposed talk</label>
-              <textarea placeholder="e.g. 'Continuous HAB monitoring in the North Sea — we'll share what two years of automated CytoSense data revealed about seasonal bloom dynamics in our estuary.'"></textarea>
+              <textarea name="talk_details" placeholder="e.g. 'Continuous HAB monitoring in the North Sea — we'll share what two years of automated CytoSense data revealed about seasonal bloom dynamics in our estuary.'"></textarea>
             </div>
 
             <div class="form-divider"></div>
@@ -700,7 +700,7 @@
 
             <div class="form-group full">
               <label>How did you hear about Customer Day 2026?</label>
-              <select>
+              <select name="how_heard">
                 <option value="">Select one</option>
                 <option>Save the Date email</option>
                 <option>Direct contact from CytoBuoy</option>
@@ -713,7 +713,7 @@
 
             <div class="form-group full">
               <label>Anything else you'd like us to know?</label>
-              <textarea placeholder="Special access needs, questions, anything at all..."></textarea>
+              <textarea name="extra_notes" placeholder="Special access needs, questions, anything at all..."></textarea>
             </div>
 
           </div><!-- /form-grid -->
@@ -904,7 +904,7 @@
   function toggleTalkField() {
     const yes = document.getElementById('talk-yes').checked;
     const maybe = document.getElementById('talk-maybe').checked;
-    document.getElementById('talk-details').style.display = yes ? 'flex' : 'none';
+    document.getElementById('talk-details').style.display = (yes || maybe) ? 'flex' : 'none';
   }
 
   function toggleChip(el) {
@@ -935,10 +935,31 @@
     ta.addEventListener('input', updateSurveyProgress);
   });
 
-  function handleRegSubmit(e) {
+  async function handleRegSubmit(e) {
     e.preventDefault();
-    document.getElementById('reg-form').style.display = 'none';
-    document.getElementById('reg-success').style.display = 'block';
+    const form = document.getElementById('reg-form');
+    const btn = form.querySelector('button[type="submit"]');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    try {
+      const response = await fetch('https://formspree.io/f/mlgkpavz', {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+        form.style.display = 'none';
+        document.getElementById('reg-success').style.display = 'block';
+      } else {
+        btn.textContent = 'Confirm my registration';
+        btn.disabled = false;
+        alert('Something went wrong. Please try again or email lilian@cytobuoy.com');
+      }
+    } catch (err) {
+      btn.textContent = 'Confirm my registration';
+      btn.disabled = false;
+      alert('Something went wrong. Please try again or email lilian@cytobuoy.com');
+    }
   }
 
   function handleSurveySubmit(e) {
