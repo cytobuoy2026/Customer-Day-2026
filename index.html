@@ -904,7 +904,7 @@
   function toggleTalkField() {
     const yes = document.getElementById('talk-yes').checked;
     const maybe = document.getElementById('talk-maybe').checked;
-    document.getElementById('talk-details').style.display = (yes || maybe) ? 'flex' : 'none';
+    document.getElementById('talk-details').style.display = yes ? 'flex' : 'none';
   }
 
   function toggleChip(el) {
